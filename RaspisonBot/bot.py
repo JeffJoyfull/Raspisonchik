@@ -2,18 +2,6 @@ from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
 import datetime
 import random
-import os
-
-# Render требует порт, если это Web Service, создаём фейковый сервер
-if os.environ.get('RENDER'):
-    from flask import Flask
-    app = Flask(__name__)
-
-    @app.route('/')
-    def home():
-        return "I'm alive!"
-
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 10000)))
 
 # 🔹 Расписание
 schedule = {
